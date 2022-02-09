@@ -1,0 +1,13 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <ul class="navbar-nav">
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/welcome" class="nav-link">Home</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/" class="nav-link">Cars</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/clients" class="nav-link">Clients</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="!isAuthenticatedUser()" routerLink="/login">Login</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/logout">Logout</a></li> 
+        </ul>
+    </nav>
+</header>
