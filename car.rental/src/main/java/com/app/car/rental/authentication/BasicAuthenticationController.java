@@ -21,6 +21,13 @@ public class BasicAuthenticationController {
         return new Authentication("You are authenticated !!!");
     }
 
+    @GetMapping("/basic/byUser/{username}")
+    public Users getAuthenticatedUser(@PathVariable("username") String username){
+        Users u = userRepository.findByUsername(username);
+        return u;
+
+    }
+
     @GetMapping("/basic/getUser/{username}")
     public Users getUserByUsername(@PathVariable("username") String username){
         return userRepository.findByUsername(username);

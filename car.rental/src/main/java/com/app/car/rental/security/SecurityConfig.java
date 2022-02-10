@@ -10,6 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -40,8 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS,"/clients/**").hasRole("ADMIN")
                 .antMatchers("/cars/**").hasRole("ADMIN")
                 .antMatchers("/booking/**").hasRole("ADMIN")
-                .antMatchers( "/basic").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/basic/getUser/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/basic", "/basic/byUser/**").permitAll()
                 .anyRequest()
                 .authenticated().and().httpBasic();
 
@@ -72,5 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
 
 }

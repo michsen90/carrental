@@ -31,7 +31,16 @@ export class BasicAuthenticationService {
         authorization: basicAuthHeaderString
       })
 
-    return this.http.get<Authentication>(
+    return this.http.get<User>(`http://localhost:8080/basic/byUser/${username}`, {headers}).pipe(
+      map(res => {
+        this.user = res;
+        sessionStorage.setItem(AUTHENTICATED_USER, username);
+        sessionStorage.setItem(TOKEN, basicAuthHeaderString);
+        sessionStorage.setItem(ROLES, this.user.roles);
+      })
+    )
+
+    /*return this.http.get<Authentication>(
       `http://localhost:8080/basic`,
       {headers}).pipe(
         map(
@@ -41,7 +50,7 @@ export class BasicAuthenticationService {
             return data;
           }
         )
-      );
+      );*/
     //console.log("Execute Hello World Bean Service")
   }
 
