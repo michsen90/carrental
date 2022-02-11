@@ -30,6 +30,7 @@ export class ClientsComponent implements OnInit {
   clients: Client[];
   res: any[];  
   client: Client;
+  id;
 
   constructor(
     private clientService: ClientService,
@@ -61,6 +62,7 @@ export class ClientsComponent implements OnInit {
 
   
   updateClient(id){
+    console.log(id);
     this.router.navigate(['client', id]);
   }
 
