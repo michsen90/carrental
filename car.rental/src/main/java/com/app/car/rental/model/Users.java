@@ -12,7 +12,7 @@ import java.util.List;
 public class Users{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
@@ -28,15 +28,18 @@ public class Users{
     private String permissions = "";
 
     @JsonIgnore
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "user")
     private Clients client;
 
-    public Users(String username, String password, String roles, String permissions){
+    public Users(Long id, String username, String password, String roles, String permisions){
+
+        super();
+        this.id = id;
         this.username = username;
         this.password = password;
         this.active = 1;
         this.roles = roles;
-        this.permissions = permissions;
+        this.permissions = permisions;
     }
 
     protected Users(){}
@@ -89,19 +92,19 @@ public class Users{
         this.permissions = permissions;
     }
 
-    public List<String> getRoleList(){
-        if(this.roles.length()>0){
+    /*public List<String> getRoleList(){
+        if(this.roles.length() > 0){
             return Arrays.asList(this.roles.split(","));
         }
         return new ArrayList<>();
     }
 
-    public List<String> getPermissionsList(){
-        if(this.permissions.length()>0){
+    public List<String> getPermissionList(){
+        if(this.permissions.length() > 0){
             return Arrays.asList(this.permissions.split(","));
         }
         return new ArrayList<>();
-    }
+    }*/
 
     public Clients getClient() {
         return client;

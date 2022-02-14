@@ -17,6 +17,9 @@ import { ClientsComponent } from './clients/clients.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { HttpIntercepterBasicAuthService } from './service/http-intercepter-basic-auth.service';
 import { ClientComponent } from './client/client.component';
+import { CarsComponent } from './cars/cars.component';
+import { PricesComponent } from './prices/prices.component';
+import { CarComponent } from './car/car.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ClientComponent } from './client/client.component';
     UsersComponent,
     ClientsComponent,
     BookingsComponent,
-    ClientComponent
+    ClientComponent,
+    CarsComponent,
+    PricesComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,

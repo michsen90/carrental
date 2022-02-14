@@ -28,4 +28,8 @@ export class ClientService {
   updateClient(id, client){
     return this.http.put<User>(`${this.API_URL}/update/${id}`, client);
   }
+
+  createClient(client){
+    return this.http.post<User>(`${this.API_URL}/add`, client);
+  }
 }

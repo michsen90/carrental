@@ -36,7 +36,6 @@ export class BasicAuthenticationService {
         this.user = res;
         sessionStorage.setItem(AUTHENTICATED_USER, username);
         sessionStorage.setItem(TOKEN, basicAuthHeaderString);
-        sessionStorage.setItem(ROLES, this.user.roles);
       })
     )
 

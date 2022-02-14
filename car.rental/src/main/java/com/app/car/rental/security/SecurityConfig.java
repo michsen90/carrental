@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors().and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/clients/**").hasRole("ADMIN")
                 .antMatchers("/cars/**").hasRole("ADMIN")
@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        http.cors();
+
 
 
         /** .antMatchers( "/test/all").permitAll()
@@ -79,8 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    void corsConfig(CorsRegistry registry){
+    /**void corsConfig(CorsRegistry registry){
         registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
-    }
+    }*/
 
 }

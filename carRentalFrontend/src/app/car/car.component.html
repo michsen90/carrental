@@ -1,0 +1,62 @@
+<h1> Zarządzanie samochodami: </h1>
+
+<div class="container">
+    <div class="alert alert-warning" *ngIf="carForm.dirty && carForm.invalid">Enter valid values into the inputs!</div>
+    <form (ngSubmit)="saveCar()" class="form-group" #carForm="ngForm">
+
+
+        <fieldset class="form-group">
+            <label>Marka</label>
+            <input type="text" #brand = "ngModel" [(ngModel)]="car.brand" class="form-control" name="brand" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Model</label>
+            <input type="text" #model = "ngModel" [(ngModel)]="car.model" class="form-control" name="model" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Rok produkcji</label>
+            <input type="date" #productionYear = "ngModel" [(ngModel)]="car.productionYear" class="form-control" name="productionYear" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Nadwozie</label>
+            <input type="text" #body = "ngModel" [(ngModel)]="car.body" class="form-control" name="body" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Klimatyzacja</label>
+            <input type="text" #airConditioning = "ngModel" [(ngModel)]="car.airConditioning" class="form-control" name="airConditioning" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Liczba pasażerów</label>
+            <input type="text" #numberPassengers = "ngModel" [(ngModel)]="car.numberPassengers" class="form-control" name="numberPassengers" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Liczba drzwi</label>
+            <input type="number" #doors = "ngModel" [(ngModel)]="car.doors" class="form-control" name="doors" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>GPS</label>
+            <input type="text" #gps = "ngModel" [(ngModel)]="car.gps" class="form-control" name="gps" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Silnik</label>
+            <input type="text" #engine = "ngModel" [(ngModel)]="car.engine" class="form-control" name="engine" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Skrzynia biegów</label>
+            <input type="text" #gearbox = "ngModel" [(ngModel)]="car.gearbox" class="form-control" name="gearbox" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Kolor</label>
+            <input type="text" #color = "ngModel" [(ngModel)]="car.color" class="form-control" name="color" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Cena za dzień</label>
+            <input type="number" #pricePerDay = "ngModel" [(ngModel)]="car.price.pricePerDay" class="form-control" name="pricePerDay" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Cena za miesiąc</label>
+            <input type="" #pricePerMonth = "ngModel" [(ngModel)]="car.price.pricePerMonth" class="form-control" name="pricePerMonth" required="required" >
+        </fieldset>
+        <button type="submit" class="btn btn-success" >Zapisz</button>
+    </form>
+</div>

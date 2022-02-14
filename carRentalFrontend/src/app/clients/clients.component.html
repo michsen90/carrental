@@ -1,19 +1,19 @@
 <h1> Clients managment panel!</h1>
 
-<button (click)="getClientById()" class="btn btn-success">jeb</button>
+
+<button (click)="createClient()" class="btn btn-success">Create new Client account</button>
 
 <div class="container">
     <table class="table">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
                 <th>Email</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Username</th>
+                <th>Adres</th>
+                <th>Telefon</th>
+                <th>Nazwa użytkownika</th>
                 <th>Role</th>
-                <th>Permision</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,8 +29,7 @@
                 <td>{{c.phone}}</td>
                 <td>{{c.user.username}}</td>
                 <td>{{c.user.roles}}</td>
-                <td>{{c.user.permissions}}</td>
-                <button class="btn btn-info" (click)="updateClient(c.idClient)">Update</button>
+                <button class="btn btn-info" (click)="updateClient(c)">Edit </button>
             </tr>
         </tbody>
     </table>

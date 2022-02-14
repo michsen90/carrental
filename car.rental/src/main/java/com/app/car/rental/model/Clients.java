@@ -30,8 +30,10 @@ public class Clients{
     @JsonManagedReference(value = "booking")
     private List<Booking> booking;
 
-    public Clients(String firstname, String lastname, String email, String city, String street, String number, String phone) {
+    public Clients(Long clientId, String firstname, String lastname, String email, String city, String street, String number, String phone) {
 
+        super();
+        this.clientId = clientId;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

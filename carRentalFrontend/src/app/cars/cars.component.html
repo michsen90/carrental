@@ -1,0 +1,44 @@
+
+<h1> Cars list: </h1>
+
+<div class="container">
+    <button class="btn btn-danger" (click)="saveCar()">Dodaj nowy samochód</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dane podstawowe: </th>
+                <th>Nadwozie</th>
+                <th>Silnik i skrzynia biegów</th>
+                <th>Wyposażenie</th>
+                <th>Cena</th>
+                <th>ZARZĄDZANIE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of cars">
+                <td>
+                    <p> Marka: {{c.brand}}</p> <p>Model: {{c.model}}</p> <p>Data produkcji: {{c.productionYear | date: 'yyyy'}}</p>
+                </td>
+                <td>{{c.body}}</td>
+                <td>
+                    <p>Silnik: {{c.engine}}</p>
+                    <p>Skrzynia: {{c.gearbox}}</p>
+                </td>
+                <td>
+                    <p>Klimatyzacja: {{c.airConditioning}}</p>
+                    <p>Liczba pasażerów: {{c.numberPassengers}}</p>
+                    <p>Kolor: {{c.color}}</p>
+                    <p>Liczba drzwi: {{c.doors}}</p>
+                    <p>Wbudowany GPS: {{c.gps}}</p>
+                </td>
+                <td>
+                    <p>Cena za dobrę wynajmu: {{c.price.pricePerDay}} PLN</p>
+                    <p>Cane za miesiąc najmu: {{c.price.pricePerMonth}} PLN</p>
+                </td>
+                <td>
+                    <button class="btn btn-info" (click)="updateCar(c)">Aktualizacj dane</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

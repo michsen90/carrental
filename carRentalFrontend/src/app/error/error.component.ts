@@ -14,4 +14,12 @@ export class ErrorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  errorClientNotFound(){
+
+  }
+
+  errorClientIdIsUndefined(id){
+    return 'The id ' + id + ' is undefined or null';
+  }
+
 }

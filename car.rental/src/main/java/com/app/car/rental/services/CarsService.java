@@ -1,7 +1,9 @@
 package com.app.car.rental.services;
 
 import com.app.car.rental.model.Cars;
+import com.app.car.rental.model.Prices;
 import com.app.car.rental.repository.CarRepository;
+import com.app.car.rental.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
@@ -16,18 +18,29 @@ public class CarsService {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private PriceRepository priceRepository;
+
     //FIND CAR BY ID
     public Cars getCarById(Long id){
         return carRepository.findCarByCarId(id);
     }
 
-    //DATE FORMATER
+    //DATE FORMATTER
     public Date getDateFromString(String dateString) throws ParseException {
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(dateString);
         return date;
+    }
+
+    public boolean isCarExists(Long id){
+        Cars c = carRepository.findCarByCarId(id);
+        if(c == null){
+            return false;
+        }
+        return true;
     }
 
     //GET CARS METHOD BY ENGINE
@@ -69,6 +82,15 @@ public class CarsService {
         }
         return carListByModel;
     }
+
+    public Cars saveCar(Cars car){
+        Cars c = carRepository.save(car);
+        Prices p = car.getPrice();
+        priceRepository.save(p);
+
+        return car;
+    }
+
 
 
 

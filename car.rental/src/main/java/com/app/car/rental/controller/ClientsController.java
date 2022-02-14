@@ -46,6 +46,7 @@ public class ClientsController {
     public ResponseEntity<Clients> newClient(@RequestBody Clients client){
 
         /**Clients newClient = clientRepository.save(client);*/
+
         Clients newClient = clientsService.addClient(client);
         return new ResponseEntity<>(newClient, HttpStatus.CREATED);
     }

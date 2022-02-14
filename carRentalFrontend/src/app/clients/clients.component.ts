@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from '../bookings/bookings.component';
+import { ErrorComponent } from '../error/error.component';
 import { TOKEN } from '../services/basic-authentication.service';
 import { ClientService } from '../services/client.service';
 import { User } from '../users/users.component';
@@ -15,8 +16,8 @@ export class Client{
     public street: string,
     public number: string,
     public phone: string,
-    public user: User,
-    public bookings: Booking[]
+    public user: User
+    //public bookings?: Booking[]
   ){}
 }
 
@@ -30,15 +31,18 @@ export class ClientsComponent implements OnInit {
   clients: Client[];
   res: any[];  
   client: Client;
-  id;
+  idClient: number;
+  error: ErrorComponent;
 
   constructor(
     private clientService: ClientService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getClientsList();
+    
   }
 
   getClientsList(){
@@ -46,7 +50,7 @@ export class ClientsComponent implements OnInit {
     console.log(sessionStorage.getItem(TOKEN))
     this.clientService.getClients().subscribe(
       data => {
-       
+        
         this.clients = data;
         console.log(this.clients);
       }
@@ -60,10 +64,18 @@ export class ClientsComponent implements OnInit {
     })
   }
 
-  
-  updateClient(id){
-    console.log(id);
-    this.router.navigate(['client', id]);
+  createClient(){
+    
+    this.router.navigate(['client', -1]);
   }
+  
+  updateClient(c){
+
+    console.log(c.id);
+    
+    this.router.navigate(['client', c.id]);
+    
+    
+  }  
 
 }

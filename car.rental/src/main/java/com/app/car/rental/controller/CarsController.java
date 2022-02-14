@@ -27,6 +27,12 @@ public class CarsController {
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
+    @GetMapping("/getCarById/{carId}")
+    public ResponseEntity<Cars> getCarById(@PathVariable("carId") Long carId){
+        Cars c = carsService.getCarById(carId);
+        return new ResponseEntity<>(c, HttpStatus.OK);
+    }
+
     @GetMapping("/get/{brand}/{model}")
     public ResponseEntity<List<Cars>> getCarByBrandAndModel(@PathVariable("brand") String brand, @PathVariable("model") String model){
 
@@ -39,4 +45,24 @@ public class CarsController {
         List<Cars> cars = carsService.getCarsByEngine(engine);
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
+
+    @PostMapping("/add")
+    public ResponseEntity<Cars> newCar(@RequestBody Cars car){
+
+        Cars c = carsService.saveCar(car);
+        return new ResponseEntity<>(c, HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{carId}")
+    public ResponseEntity<Cars> updateCar(@PathVariable("carId") Long id, @RequestBody Cars car){
+        if(!carsService.isCarExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+            Cars c = carsService.saveCar(car);
+            return new ResponseEntity<>(c, HttpStatus.OK);
+        }
+
+    }
+
+
 }

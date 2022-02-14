@@ -1,13 +1,13 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <ul class="navbar-nav">
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/welcome" class="nav-link">Home</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/" class="nav-link">Cars</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/clients" class="nav-link">Clients</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/welcome" class="nav-link">O nas</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/clients" class="nav-link">Klienci</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/cars" class="nav-link">Samochody</a></li>
         </ul>
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li><a *ngIf="!isAuthenticatedUser()" routerLink="/login">Login</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/logout">Logout</a></li> 
+            <li><a *ngIf="!isAuthenticatedUser()" routerLink="/login">Zaloguj</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/logout">Wyloguj</a></li> 
         </ul>
     </nav>
 </header>

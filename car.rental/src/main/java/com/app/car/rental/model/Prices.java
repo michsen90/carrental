@@ -23,13 +23,13 @@ public class Prices {
 
     protected Prices () {}
 
-    public Prices(Double pricePerDay, Double discountAfterThreeDays, Double discountAfterOneWeek, Double pricePerMonth) {
+    /*public Prices(Double pricePerDay, Double discountAfterThreeDays, Double discountAfterOneWeek, Double pricePerMonth) {
 
         this.pricePerDay = pricePerDay;
         this.discountAfterThreeDays = discountAfterThreeDays;
         this.discountAfterOneWeek = discountAfterOneWeek;
         this.pricePerMonth = pricePerMonth;
-    }
+    }*/
 
     public Prices(Double pricePerDay, Double pricePerMonth) {
         this.pricePerDay = pricePerDay;

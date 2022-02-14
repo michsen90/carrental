@@ -1,1 +1,52 @@
-<p>client works!</p>
+<h1>Client management</h1>
+
+<div class="container">
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && clientForm.invalid">Enter valid values into the inputs!</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && firstname.valid">Enter the firsrname</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && lastname.valid">Enter the lastname</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && email.valid">Enter the correct email address</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && username.valid">Enter the valid username</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && password.valid">Enter the valid username</div>
+  
+
+
+    <form (ngSubmit)="!clientForm.invalid && saveClient()" #clientForm="ngForm">
+        <fieldset class="form-group">
+            <label>Firstname</label>
+            <input type="text" #firstname = "ngModel" [(ngModel)]="client.firstname" class="form-control" name="firstname" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Lastname</label>
+            <input type="text" #lastname = "ngModel" [(ngModel)]="client.lastname" class="form-control" name="lastname" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Email</label>
+            <input type="email" #email = "ngModel" [(ngModel)]="client.email" class="form-control" name="email" required="required" minlength="5">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>City</label>
+            <input type="text" #city = "ngModel" [(ngModel)]="client.city" class="form-control" name="city" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Street</label>
+            <input type="text" #street = "ngModel" [(ngModel)]="client.street" class="form-control" name="street" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Number house/flat</label>
+            <input type="text" #number = "ngModel" [(ngModel)]="client.number" class="form-control" name="number" required="required" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Phone</label>
+            <input type="tel" #phone = "ngModel" [(ngModel)]="client.phone" class="form-control" name="phone" required="required" minlength="8">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Username</label>
+            <input type="text" #username = "ngModel" [(ngModel)]="client.user.username" class="form-control" name="username" required="required" minlength="3">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Password</label>
+            <input type="password" #password = "ngModel" (ngModel)="client.user.password" class="form-control" name="password" required="required" minlength="5">
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save Client </button> 
+    </form>
+</div>

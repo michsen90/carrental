@@ -22,7 +22,7 @@ public class UserPrincipal implements UserDetails {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        user.getPermissionsList().forEach(p -> {
+        /*user.getPermissionList().forEach(p -> {
             GrantedAuthority authority = new SimpleGrantedAuthority(p);
             authorities.add(authority);
         });
@@ -30,7 +30,10 @@ public class UserPrincipal implements UserDetails {
         user.getRoleList().forEach(r -> {
             GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
             authorities.add(authority);
-        });
+        });*/
+        String r = user.getRoles();
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
+        authorities.add(authority);
 
         return authorities;
     }
