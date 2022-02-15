@@ -62,4 +62,12 @@ export class CarsComponent implements OnInit {
     this.router.navigate(['car', car.id]);
   }
 
+  deleteCar(c){
+    this.carService.deleteCar(c.id).subscribe(
+      res => {
+        this.retriveAllCars();
+      }
+    )
+  }
+
 }

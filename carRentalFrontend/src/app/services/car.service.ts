@@ -28,4 +28,8 @@ export class CarService {
     updateCar(carId, car){
       return this.http.put<Car>(`${this.API_URL_CARS}/update/${carId}`, car);
     }
+
+    deleteCar(carId){
+      return this.http.delete(`${this.API_URL_CARS}/delete/${carId}`);
+    }
 }

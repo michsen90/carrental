@@ -55,6 +55,21 @@ public class BookingService {
 
     }
 
+    public Booking updateBooking(Long id, Booking booking){
+        Booking b = bookingRepository.getById(id);
+        if(b == null){
+            return null;
+        }
+        bookingRepository.save(booking);
+        return booking;
+    }
+
+    public void deleteBooking(Long id){
+        Booking b = bookingRepository.getById(id);
+        bookingRepository.delete(b);
+
+    }
+
     public boolean findInString(String text, String word){
         return text.toLowerCase().indexOf(word.toLowerCase()) > -1;
     }

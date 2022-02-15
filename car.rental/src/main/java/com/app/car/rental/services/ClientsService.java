@@ -32,16 +32,6 @@ public class ClientsService {
 
     }
 
-    public boolean deleteClient(Long id){
-
-        if (!isClientExists(id)) return false;
-        Clients c = clientRepository.findClientByClientId(id);
-        userRepository.deleteById(c.getUser().getId());
-        clientRepository.deleteById(c.getId());
-        return true;
-
-    }
-
     public Clients addClient(Clients client){
 
         System.out.println("Client: " + client);
@@ -52,5 +42,12 @@ public class ClientsService {
         userRepository.save(u);
         userRepository.save(client.getUser());
         return c;
+    }
+
+    public void deleteClient(Long id){
+        Clients c = clientRepository.findClientByClientId(id);
+        Users u = c.getUser();
+        userRepository.delete(u);
+        clientRepository.delete(c);
     }
 }

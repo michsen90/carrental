@@ -22,16 +22,43 @@
             <input type="text" #body = "ngModel" [(ngModel)]="car.body" class="form-control" name="body" required="required" minlength="3">
         </fieldset>
         <fieldset class="form-group">
+            <!--
             <label>Klimatyzacja</label>
-            <input type="text" #airConditioning = "ngModel" [(ngModel)]="car.airConditioning" class="form-control" name="airConditioning" required="required" >
+            <input type="radio" class="btn-check" #airConditioning = "ngModel" [(ngModel)]="car.airConditioning"  name="airConditioning" [value]="tak" required="required" >TAK
+            <input type="radio" #airConditioning = "ngModel" [(ngModel)]="car.airConditioning" name="airConditioning" [value]="nie" required="required" >NIE
+-->
+            <label>Klimatyzacja</label><br>
+            <!--<select class="select-group">
+                <option [value]="tak">TAK</option>
+                <option [value]="nie">NIE</option>
+            </select>-->
+            TAK <input type="radio" name="airConditioning" [value]="tak" [(ngModel)]="car.airConditioning" [checked]="true" ><br>
+            NIE <input type="radio" name="airConditioning" [value]="nie" [(ngModel)]="car.airConditioning" [checked]="true" >
+
         </fieldset>
         <fieldset class="form-group">
-            <label>Liczba pasażerów</label>
-            <input type="text" #numberPassengers = "ngModel" [(ngModel)]="car.numberPassengers" class="form-control" name="numberPassengers" required="required" >
+            <label>Liczba pasażerów</label><br> 
+            <!-- <input type="text" #numberPassengers = "ngModel" [(ngModel)]="car.numberPassengers" class="form-control" name="numberPassengers" required="required" >-->
+            <!-- <select class="select-pass">
+                <option [value]="dwa">2</option>
+                <option [value]="cztery">4</option>
+                <option [value]="piec">5</option>
+                <option [value]="siedem">7</option>
+            </select>-->
+            2 <input type="radio" name="numberPassengers" [value]="dwa" [(ngModel)]="car.numberPassengers" [checked]="true"><br>
+            4 <input type="radio" name="numberPassengers" [value]="cztery" [(ngModel)]="car.numberPassengers" [checked]="true"><br>
+            5 <input type="radio" name="numberPassengers" [value]="piec" [(ngModel)]="car.numberPassengers" [checked]="true"><br>
+            7 <input type="radio" name="numberPassengers" [value]="siedem" [(ngModel)]="car.numberPassengers" [checked]="true"><br>
+
         </fieldset>
         <fieldset class="form-group">
             <label>Liczba drzwi</label>
-            <input type="number" #doors = "ngModel" [(ngModel)]="car.doors" class="form-control" name="doors" required="required" >
+            2 <input type="radio" [(ngModel)]="car.doors" [value]="dwa" name="doors" [checked]="true">,<br>
+            3 <input type="radio" [(ngModel)]="car.doors" [value]="trzy" name="doors" [checked]="true"> <br>
+            4 <input type="radio" [(ngModel)]="car.doors" [value]="cztery" name="doors" [checked]="true"> <br>
+            5 <input type="radio" [(ngModel)]="car.doors" [value]="piec" name="doors" [checked]="true"> <br>
+            
+            <!-- <input type="number" #doors = "ngModel" [(ngModel)]="car.doors" class="form-control" name="doors" required="required" > -->
         </fieldset>
         <fieldset class="form-group">
             <label>GPS</label>

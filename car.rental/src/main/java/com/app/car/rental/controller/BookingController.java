@@ -56,5 +56,20 @@ public class BookingController {
 
     }
 
+    @PutMapping("/update/{bookingId}")
+    public ResponseEntity<Booking> updateBooking(@PathVariable("bookingId") Long id, @RequestBody Booking booking){
+
+        Booking b = bookingService.updateBooking(id, booking);
+        return new ResponseEntity<>(b, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{bookingId}")
+    public ResponseEntity<Void> deleteBooking(@PathVariable("bookingId") Long id){
+
+        bookingService.deleteBooking(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
 }

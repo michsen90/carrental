@@ -76,6 +76,14 @@ export class ClientsComponent implements OnInit {
     this.router.navigate(['client', c.id]);
     
     
-  }  
+  }
+  
+  deleteClient(c){
+    this.clientService.deleteClient(c.id).subscribe(
+      res => {
+        this.getClientsList();
+      }
+    )
+  }
 
 }

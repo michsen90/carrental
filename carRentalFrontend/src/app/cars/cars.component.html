@@ -7,8 +7,7 @@
         <thead>
             <tr>
                 <th>Dane podstawowe: </th>
-                <th>Nadwozie</th>
-                <th>Silnik i skrzynia biegów</th>
+                <th>Parametry</th>
                 <th>Wyposażenie</th>
                 <th>Cena</th>
                 <th>ZARZĄDZANIE</th>
@@ -17,9 +16,9 @@
         <tbody>
             <tr *ngFor="let c of cars">
                 <td>
-                    <p> Marka: {{c.brand}}</p> <p>Model: {{c.model}}</p> <p>Data produkcji: {{c.productionYear | date: 'yyyy'}}</p>
+                    <p> Marka: {{c.brand}}</p> <p>Model: {{c.model}}</p> <p>Data produkcji: {{c.productionYear | date: 'yyyy'}} </p> <p>Nadwozie: {{c.body}}</p>
                 </td>
-                <td>{{c.body}}</td>
+                
                 <td>
                     <p>Silnik: {{c.engine}}</p>
                     <p>Skrzynia: {{c.gearbox}}</p>
@@ -37,6 +36,7 @@
                 </td>
                 <td>
                     <button class="btn btn-info" (click)="updateCar(c)">Aktualizacj dane</button>
+                    <button class="btn btn-danger" (click)="deleteCar(c)">Usuń samochód</button>
                 </td>
             </tr>
         </tbody>

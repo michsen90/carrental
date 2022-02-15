@@ -32,4 +32,8 @@ export class ClientService {
   createClient(client){
     return this.http.post<User>(`${this.API_URL}/add`, client);
   }
+
+  deleteClient(id){
+    return this.http.delete(`${this.API_URL}/delete/${id}`);
+  }
 }

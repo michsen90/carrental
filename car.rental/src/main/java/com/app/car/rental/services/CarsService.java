@@ -91,7 +91,13 @@ public class CarsService {
         return car;
     }
 
+    public void deleteCar(Long id){
+        Cars c = carRepository.findCarByCarId(id);
+        Prices p = c.getPrice();
+        priceRepository.delete(p);
+        carRepository.delete(c);
 
+    }
 
 
     public boolean findInString(String text, String word){

@@ -16,6 +16,15 @@ export class CarComponent implements OnInit {
   price: Prices;
   idPrice: number
 
+  tak = 'TAK';
+  nie = 'NIE';
+
+  dwa = 2;
+  trzy = 3;
+  cztery = 4;
+  piec = 5;
+  siedem = 7;
+
   
   constructor(
     private carService: CarService,
@@ -37,6 +46,7 @@ export class CarComponent implements OnInit {
     if(this.id != -1){
       this.getCarById(this.id);
     }
+
   }
 
   getCarById(id){

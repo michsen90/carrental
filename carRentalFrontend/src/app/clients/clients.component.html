@@ -1,7 +1,7 @@
-<h1> Clients managment panel!</h1>
+<h1>Zarządzanie Klientami</h1>
 
 
-<button (click)="createClient()" class="btn btn-success">Create new Client account</button>
+<button (click)="createClient()" class="btn btn-success">Utwórz konto nowego klienta</button>
 
 <div class="container">
     <table class="table">
@@ -14,7 +14,7 @@
                 <th>Telefon</th>
                 <th>Nazwa użytkownika</th>
                 <th>Role</th>
-                <th>Actions</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,8 @@
                 <td>{{c.phone}}</td>
                 <td>{{c.user.username}}</td>
                 <td>{{c.user.roles}}</td>
-                <button class="btn btn-info" (click)="updateClient(c)">Edit </button>
+                <button class="btn btn-info" (click)="updateClient(c)">Edytuj </button>
+                <button class="btn btn-info" (click)="deleteClient(c)">Usun</button>
             </tr>
         </tbody>
     </table>

@@ -65,10 +65,8 @@ public class ClientsController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable("id") Long id){
 
-        if(!clientsService.deleteClient(id)){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
+        clientsService.deleteClient(id);
+        return ResponseEntity.noContent().build();
 
     }
 
