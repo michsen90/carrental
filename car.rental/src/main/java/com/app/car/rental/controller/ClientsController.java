@@ -30,6 +30,12 @@ public class ClientsController {
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
 
+    @GetMapping("getByUsername/{username}")
+    public ResponseEntity<Clients> getClientByUsername(@PathVariable("username") String username){
+        Clients client = clientsService.getClientByUsername(username);
+        return new ResponseEntity<>(client, HttpStatus.OK);
+    }
+
     @GetMapping("/getById/{id}")
     public ResponseEntity<Clients> getClientById(@PathVariable Long id){
         Clients client = clientRepository.findClientByClientId(id);

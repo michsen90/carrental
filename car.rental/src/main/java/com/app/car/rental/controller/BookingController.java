@@ -41,6 +41,13 @@ public class BookingController {
         return new ResponseEntity<>(listBookedCarsByModel, HttpStatus.OK);
     }
 
+    @GetMapping("/getBookingById/{bookingId}")
+    public ResponseEntity<Booking> getBookingsById(@PathVariable("bookingId") Long id){
+
+        Booking b = bookingService.getBookingById(id);
+        return new ResponseEntity<>(b, HttpStatus.OK);
+    }
+
     /**@GetMapping("/getByCar/{carId}")
     public ResponseEntity<List<Booking>> bookingsByCars(@PathVariable("carId") Long carId){
 

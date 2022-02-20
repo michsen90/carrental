@@ -25,6 +25,12 @@ public class BookingService {
     @Autowired
     private CarsService carsService;
 
+    public Booking getBookingById(Long id){
+
+        Booking b = bookingRepository.getBookingsByBookingId(id);
+        return b;
+    }
+
     public List<Booking> findAllByClient(Long clientId){
 
         Clients client = clientsService.getClientById(clientId);

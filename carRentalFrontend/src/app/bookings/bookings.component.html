@@ -1,1 +1,25 @@
-<p>bookings works!</p>
+<h1>Zarządzanie rezerwacjami wynajmów</h1>
+
+
+<table class="table">
+    <button class="btn btn-success" (click)="newBooking()">Nowa rezerwacja</button>
+    <thead>
+        <tr>
+            <th>Numer rezerwacji: </th>
+            <th>Start rezerwacji: </th>
+            <th>Koniec rezerwacji: </th>
+            <th> Zarządzaj </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of bookings">
+            <td>{{b.bookingId}}</td>
+            <td>{{b.startDate | date: 'yyyy-MM-dd'}}</td>
+            <td>{{b.endDate | date: 'yyyy-MM-dd'}}</td>
+            <td>
+                <button class="btn btn-info" (click)="updateBooking(b)">Aktualizuj</button>
+                <button class="btn btn-danger" (click)="deleteBooking(b)">Usuń rezerwację</button>
+            </td>           
+        </tr>
+    </tbody>
+</table>

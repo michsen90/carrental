@@ -20,7 +20,10 @@ import { ClientComponent } from './client/client.component';
 import { CarsComponent } from './cars/cars.component';
 import { PricesComponent } from './prices/prices.component';
 import { CarComponent } from './car/car.component';
+import { CheckFreeCarsComponent } from './check-free-cars/check-free-cars.component';
+import { DatePipe } from '@angular/common';
 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,8 @@ import { CarComponent } from './car/car.component';
     ClientComponent,
     CarsComponent,
     PricesComponent,
-    CarComponent
+    CarComponent,
+    CheckFreeCarsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { CarComponent } from './car/car.component';
     NgbModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true},
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

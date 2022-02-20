@@ -1,0 +1,59 @@
+<h1>Wyszukaj wolne samochody</h1> 
+
+<div class="container">
+    <h3>Wybierz datę rozpoczęcia i zakończenia najmu</h3>
+
+    <form (ngSubmit)="findCars()" #bookingForm="ngForm">
+        <fieldset class="form-group">
+            Data rozpoczęcia: 
+            <input type="date" #startDate="ngModel" [ngModel]="booking.startDate | date: 'yyyy-MM-dd'" (ngModelChange)="booking.startDate = $event" name="startDate" class="form-control">
+        </fieldset>
+        <fieldset class="form-group">
+            Data zakończenia: 
+            <input type="date" #endDate="ngModel" [ngModel]="booking.endDate | date:'yyyy-MM-dd'" (ngModelChange)="booking.endDate = $event" name="endDate" class="form-control">
+        </fieldset>
+        <button class="btn btn-success" type="submit">Pokaż</button>
+    </form>
+
+    
+
+    <p>
+
+
+    </p>
+
+    <table class="table table-success">
+        <thead>
+            <tr>
+                <th>Marka i model</th>
+                <th>Rok produkcji</th>
+                <th>Nadwozie</th>
+                <th>Wyposażenie</th>
+                <th>Cena za dzień</th>
+                <th>Cena za miesiąc</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let car of cars">
+            <tr>
+                <td>
+                    Marka: {{car.brand}}<br>
+                    Model: {{car.model}}
+                </td>
+                <td>{{car.productionYear}}</td>
+                <td>{{car.body}}</td>
+                <td>
+                    Klimatyzacja: {{car.airConditioning}}<br>
+                    GPS: {{car.gps}}<br>
+                    Silnik: {{car.engine}}<br>
+                    Skrzynia biegów: {{car.gearbox}}<br>
+                    Kolor: {{car.color}}<br>
+                    Liczba pasażerów: {{car.numberPassengers}}<br>
+                    Liczba drzwi: {{car.doors}}
+                </td>
+                <td>{{car.price.pricePerDay}}</td>
+                <td>{{car.price.pricePerMonth}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

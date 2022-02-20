@@ -21,6 +21,10 @@ export class ClientService {
     return this.http.get<Client[]>(`${this.API_URL}/all`);
   }
 
+  getClientByUsername(username){
+    return this.http.get<Client>(`${this.API_URL}/getByUsername/${username}`);
+  }
+
   getClientById(id){
     return this.http.get<Client>(`${this.API_URL}/getById/${id}`);
   }

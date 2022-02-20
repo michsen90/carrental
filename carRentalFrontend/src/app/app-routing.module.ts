@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookingsComponent } from './bookings/bookings.component';
 import { CarComponent } from './car/car.component';
 import { CarsComponent } from './cars/cars.component';
+import { CheckFreeCarsComponent } from './check-free-cars/check-free-cars.component';
 import { ClientComponent } from './client/client.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ErrorComponent } from './error/error.component';
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'client/:idClient', component: ClientComponent, canActivate: [RouteGuardService]},
   { path: 'cars', component: CarsComponent, canActivate: [RouteGuardService]},
   { path: 'car/:idCar', component: CarComponent, canActivate: [RouteGuardService]},
-
+  { path: 'booking', component: BookingsComponent, canActivate: [RouteGuardService]},
+  { path: 'check-free-cars/:bookingId', component: CheckFreeCarsComponent, canActivate: [RouteGuardService]},
 
 
   { path: '**', component: ErrorComponent}

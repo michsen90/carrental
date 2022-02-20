@@ -50,4 +50,9 @@ public class ClientsService {
         userRepository.delete(u);
         clientRepository.delete(c);
     }
+
+    public Clients getClientByUsername(String username){
+        Clients c = clientRepository.findByUserUsername(username);
+        return c;
+    }
 }

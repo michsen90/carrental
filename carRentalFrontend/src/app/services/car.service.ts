@@ -32,4 +32,8 @@ export class CarService {
     deleteCar(carId){
       return this.http.delete(`${this.API_URL_CARS}/delete/${carId}`);
     }
+
+    getFreeCars(startDate, endDate){
+      return this.http.get<Car[]>(`${this.API_URL_CARS}/getFreeCars/${startDate}/${endDate}`);
+    }
 }
