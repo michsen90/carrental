@@ -9,6 +9,7 @@ export class Booking{
     public bookingId: number,
     public startDate: Date,
     public endDate: Date,
+    public finalPrice: number,
     public client?: Client,
     public car?: Car
   ){}

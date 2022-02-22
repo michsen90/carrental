@@ -2,8 +2,10 @@
 
 <div class="container">
     <h3>Wybierz datę rozpoczęcia i zakończenia najmu</h3>
-
-    <form (ngSubmit)="findCars()" #bookingForm="ngForm">
+    
+    
+    <form (ngSubmit)="findCars()"  #bookingForm="ngForm"> 
+        <div class="alert alert-danger" *ngIf="invalidDates">{{errorMessageWrongDates}}</div>
         <fieldset class="form-group">
             Data rozpoczęcia: 
             <input type="date" #startDate="ngModel" [ngModel]="booking.startDate | date: 'yyyy-MM-dd'" (ngModelChange)="booking.startDate = $event" name="startDate" class="form-control">
@@ -58,7 +60,7 @@
                     {{finalPrice}} PLN brutto
                 </td>
                 <td>
-                    <button type="submit" (click)="bookingThisCar(car)">Rezerwuj!</button><br>
+                    <button type="submit" (click)="bookingThisCar()">Rezerwuj!</button><br>
                     <button type="submit" (click)="changeCar()">Zmień samochód</button>
                 </td>
             </tr>

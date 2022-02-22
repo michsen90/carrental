@@ -8,6 +8,7 @@
             <th>Numer rezerwacji: </th>
             <th>Start rezerwacji: </th>
             <th>Koniec rezerwacji: </th>
+            <th>Koszty: </th>
             <th> Zarządzaj </th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
             <td>{{b.bookingId}}</td>
             <td>{{b.startDate | date: 'yyyy-MM-dd'}}</td>
             <td>{{b.endDate | date: 'yyyy-MM-dd'}}</td>
+            <td>{{b.finalPrice}} PLN brutto</td>
             <td>
                 <button class="btn btn-info" (click)="updateBooking(b)">Aktualizuj</button>
                 <button class="btn btn-danger" (click)="deleteBooking(b)">Usuń rezerwację</button>

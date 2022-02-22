@@ -1,6 +1,8 @@
 package com.app.car.rental.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -17,9 +19,13 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "address_gen")
     private Long bookingId;
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
+    private Double finalPrice;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     @JsonBackReference
@@ -37,9 +43,10 @@ public class Booking {
         this.endDate = endDate;
     }
 
-    public Booking(Date startDate, Date endDate, Cars car, Clients client) {
+    public Booking(Date startDate, Date endDate, double finalPrice, Cars car, Clients client) {
         this.startDate = startDate;
         this.endDate = endDate;
+        this.finalPrice = finalPrice;
         this.car = car;
         this.client = client;
     }
@@ -82,5 +89,13 @@ public class Booking {
 
     public void setClient(Clients client) {
         this.client = client;
+    }
+
+    public Double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

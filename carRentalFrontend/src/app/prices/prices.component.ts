@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class Prices{
   constructor(
-    public idPrice: number,
+    public priceId: number,
     public pricePerDay: number,
     public discountAfterThreeDays: number,
     public discountAfterOneWeek: number,
