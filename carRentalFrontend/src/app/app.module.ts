@@ -22,6 +22,7 @@ import { PricesComponent } from './prices/prices.component';
 import { CarComponent } from './car/car.component';
 import { CheckFreeCarsComponent } from './check-free-cars/check-free-cars.component';
 import { DatePipe } from '@angular/common';
+import { MakeBookingCarComponent } from './make-booking-car/make-booking-car.component';
 
  
 @NgModule({
@@ -40,7 +41,8 @@ import { DatePipe } from '@angular/common';
     CarsComponent,
     PricesComponent,
     CarComponent,
-    CheckFreeCarsComponent
+    CheckFreeCarsComponent,
+    MakeBookingCarComponent
   ],
   imports: [
     BrowserModule,

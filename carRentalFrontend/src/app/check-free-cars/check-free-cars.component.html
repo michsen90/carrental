@@ -19,10 +19,57 @@
 
     <p>
 
+    </p>
+
+
+    <table class="table" *ngIf="isChoosen">
+        <thead>
+            <tr>
+                <th>Marka i model</th>
+                <th>Rok produkcji</th>
+                <th>Nadwozie</th>
+                <th>Wyposażenie</th>
+                <th>Koszty</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{car.brand}}<br>
+                    {{car.model}}
+                </td>
+                <td>
+                    {{car.productionYear | date: 'yyyy-MM-dd'}}
+                </td>
+                <td>
+                    {{car.body}}
+                </td>
+                <td>
+                    Klimatyzacja: {{car.airConditioning}},<br>
+                    GPS: {{car.gps}}<br>
+                    Silnik: {{car.engine}}<br>
+                    Skrzynia biegów: {{car.gearbox}}<br>
+                    Kolor: {{car.color}}<br>
+                    Liczba pasażerów: {{car.numberPassengers}}<br>
+                    Liczba drzwi: {{car.doors}}
+                </td>
+                <td>
+                    {{finalPrice}} PLN brutto
+                </td>
+                <td>
+                    <button type="submit" (click)="bookingThisCar(car)">Rezerwuj!</button><br>
+                    <button type="submit" (click)="changeCar()">Zmień samochód</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
 
     </p>
 
-    <table class="table table-success">
+    <table class="table" *ngIf="!isChoosen" >
         <thead>
             <tr>
                 <th>Marka i model</th>
@@ -31,27 +78,31 @@
                 <th>Wyposażenie</th>
                 <th>Cena za dzień</th>
                 <th>Cena za miesiąc</th>
+                <th>Wybierz</th>
             </tr>
         </thead>
-        <tbody *ngFor="let car of cars">
-            <tr>
+        <tbody>
+            <tr *ngFor="let c of cars">
                 <td>
-                    Marka: {{car.brand}}<br>
-                    Model: {{car.model}}
+                    Marka: {{c.brand}}<br>
+                    Model: {{c.model}}
                 </td>
-                <td>{{car.productionYear}}</td>
-                <td>{{car.body}}</td>
+                <td>{{c.productionYear | date:'yyyy-MM-dd'}}</td>
+                <td>{{c.body}}</td>
                 <td>
-                    Klimatyzacja: {{car.airConditioning}}<br>
-                    GPS: {{car.gps}}<br>
-                    Silnik: {{car.engine}}<br>
-                    Skrzynia biegów: {{car.gearbox}}<br>
-                    Kolor: {{car.color}}<br>
-                    Liczba pasażerów: {{car.numberPassengers}}<br>
-                    Liczba drzwi: {{car.doors}}
+                    Klimatyzacja: {{c.airConditioning}}<br>
+                    GPS: {{c.gps}}<br>
+                    Silnik: {{c.engine}}<br>
+                    Skrzynia biegów: {{c.gearbox}}<br>
+                    Kolor: {{c.color}}<br>
+                    Liczba pasażerów: {{c.numberPassengers}}<br>
+                    Liczba drzwi: {{c.doors}}
                 </td>
-                <td>{{car.price.pricePerDay}}</td>
-                <td>{{car.price.pricePerMonth}}</td>
+                <td>{{c.price.pricePerDay}} PLN brutto</td>
+                <td>{{c.price.pricePerMonth}} PLN brutto</td>
+                <td>
+                    <button type="submit" (click)="takeCar(c)" class="btn btn-dark" >Wybierz</button>
+                </td>
             </tr>
         </tbody>
     </table>
