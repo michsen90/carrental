@@ -32,6 +32,8 @@ export class CheckFreeCarsComponent implements OnInit {
   price;
   finalPrice; 
   qtyDays: number;
+  qtyMonths: number;
+
 
   errorMessageWrongDates = 'Data zakończenia najmu musi następować przynajmniej 1 dzień później niż data rozpoczęcią!';
   invalidDates = false;
@@ -72,8 +74,8 @@ export class CheckFreeCarsComponent implements OnInit {
     this.clientService.getClientByUsername(username).subscribe(
       res => {        
         this.booking.client = res;
-        console.log(this.booking.client);
-        console.log(this.booking);
+        //console.log(this.booking.client);
+        //console.log(this.booking);
       }
     )
   }
@@ -120,10 +122,11 @@ export class CheckFreeCarsComponent implements OnInit {
 
   bookingThisCar(){
 
-    console.log(this.booking);
+    //console.log(this.booking);
     this.bookingService.createBooking(this.booking).subscribe(
-      
-    )
+      res => {
+        this.router.navigate(['booking']);
+      })
     
   }
 
@@ -133,6 +136,9 @@ export class CheckFreeCarsComponent implements OnInit {
     
     this.qtyDays = this.diffDates(this.booking.startDate, this.booking.endDate);
     //console.log('qtyDays: ' + this.qtyDays);
+
+    this.qtyMonths = this.diffDatesInMonths(this.booking.startDate, this.booking.endDate);
+    console.log(this.qtyMonths);
 
     switch(true){
       case (this.qtyDays<3):
@@ -145,7 +151,7 @@ export class CheckFreeCarsComponent implements OnInit {
         this.finalPrice = (c.price.pricePerDay * c.price.discountAfterOneWeek) * this.qtyDays;
         break;
       case(this.qtyDays > 28):
-        if(this.booking.endDate.getMonth() - this.booking.startDate.getMonth() == 1){
+        if(this.qtyMonths == 1){
           this.finalPrice = c.price.pricePerMonth
         }else{
           this.finalPrice = c.price.pricePerMonth * (this.booking.endDate.getMonth() - this.booking.startDate.getMonth());
@@ -171,6 +177,15 @@ export class CheckFreeCarsComponent implements OnInit {
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
     return difference_In_Days;
   }
+
+  diffDatesInMonths(startDateString, endDateString){
+    var date1 = new Date(startDateString);
+    var date2 = new Date(endDateString);
+    return Math.max(
+      (date2.getFullYear() - date1.getFullYear()) * 12 + 
+      date2.getMonth() - 
+      date1.getMonth(), 0
+    )}
 
 
 

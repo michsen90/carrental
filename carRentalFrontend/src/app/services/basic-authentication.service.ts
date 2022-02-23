@@ -2,6 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
 import { User } from '../users/users.component';
+import { ClientService } from './client.service';
 
 export class Authentication{
   constructor(public message: string) {}
@@ -18,7 +19,9 @@ export class BasicAuthenticationService {
 
   user: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+    ) { }
 
   makeAuthentication(username, password) {
     
@@ -36,6 +39,7 @@ export class BasicAuthenticationService {
         this.user = res;
         sessionStorage.setItem(AUTHENTICATED_USER, username);
         sessionStorage.setItem(TOKEN, basicAuthHeaderString);
+        sessionStorage.setItem(ROLES, res.roles);
       })
     )
 

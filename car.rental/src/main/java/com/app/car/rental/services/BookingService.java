@@ -8,6 +8,7 @@ import com.app.car.rental.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -78,5 +79,11 @@ public class BookingService {
 
     public boolean findInString(String text, String word){
         return text.toLowerCase().indexOf(word.toLowerCase()) > -1;
+    }
+
+    public Booking saveBooking(Booking booking){
+        Booking b = bookingRepository.save(booking);
+
+        return b;
     }
 }

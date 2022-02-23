@@ -1,6 +1,9 @@
 package com.app.car.rental.controller;
 
 import com.app.car.rental.model.Booking;
+import com.app.car.rental.pdf.EmailService;
+import com.app.car.rental.pdf.Mail;
+import com.app.car.rental.pdf.PDFBooking;
 import com.app.car.rental.repository.BookingRepository;
 import com.app.car.rental.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,12 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping("/booking")
 public class BookingController {
+
+
+    String EMAIL_SEND = "michalsenkowicz23@gmail.com";
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private BookingRepository bookingRepository;
@@ -58,7 +67,11 @@ public class BookingController {
     @PostMapping("/addBooking")
     public ResponseEntity<Booking> newCarBooking(@RequestBody Booking book){
 
-        Booking newBooking = bookingRepository.save(book);
+        Booking newBooking = bookingService.saveBooking(book);
+        PDFBooking pdfBooking = new PDFBooking();
+        pdfBooking.createPdfBooking(newBooking);
+        String fileName = pdfBooking.getFileName(String.valueOf(book.getBookingId()));
+        //prepareEmailToSend(book, fileName);
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
 
     }
@@ -78,5 +91,19 @@ public class BookingController {
     }
 
 
+    public void prepareEmailToSend(Booking booking, String filename){
+        Mail mail = new Mail();
+        mail.setMailFrom(EMAIL_SEND);
+        mail.setMailTo(booking.getClient().getEmail());
+        mail.setMailSubject("Potwierdzenie złożenia zamówienia numer: " + booking.getBookingId() + "!");
+        mail.setMailContent("Witaj " + booking.getClient().getFirstname() + " " + booking.getClient().getFirstname() +" ! \n\n" +
+                "   W załączeniu przesyłamy potwierdzenie dokonania rezerwacji na samochód: " + booking.getCar().getBrand() + " " + booking.getCar().getModel() + "\n" +
+                "Samochód jest do odbioru w naszej siedzibie przy Lotnisku od godziny 9:00 do 17:00, przekroczenie tego okresu, będzie wiązało się z naliczeniem kosztów, \n" +
+                "związanych z przetrzymanie pojazdu, tj. " + booking.getCar().getPrice().getPricePerDay() + " PLN brutto za dobrę. /n" +
+                "\n\n" +
+                "Jeśli masz jakieś pytania, skontaktuj się z nami telefonicznie lub mailowo na: \n" +
+                "Email: " + EMAIL_SEND);
+        emailService.sendEmail(mail, filename);
+    }
 
 }
