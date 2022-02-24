@@ -8,16 +8,13 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 
 public class PDFBooking {
@@ -35,7 +32,7 @@ public class PDFBooking {
 
 
         Document document = new Document(PageSize.LETTER.rotate());
-        String title = String.valueOf(booking.getBookingId() + booking.getCar().getId() + booking.getClient().getId() + String.valueOf(booking.getStartDate().getTime())) + ".pdf";
+        String title = String.valueOf(booking.getBookingId() + "-" + booking.getCar().getId() + booking.getClient().getId() + String.valueOf(booking.getStartDate().getTime())) + ".pdf";
 
         String[] headerBookingDetails = new String[] {"Numer zamowienia: ", "Data poczatku wynajmu: ", "Data zakonczenia wynajmu: ", "Calkowity koszt wynajmu: "};
         String[] rowBookingDetails = new String[] {String.valueOf(booking.getBookingId()), startDateString, endDateString, String.valueOf(booking.getFinalPrice()) + " PLN"};
@@ -317,21 +314,28 @@ public class PDFBooking {
     public String getFileName(String id){
         File dir = new File("PDF/");
         String fileName = "";
+        FilenameFilter filter = new FilenameFilter() {
 
-        FilenameFilter filenameFilter = new FilenameFilter() {
+
             @Override
             public boolean accept(File dir, String name) {
+
                 return name.startsWith(id);
             }
         };
-        String[] children = dir.list(filenameFilter);
-        if(children.length == 1){
-            for (int i=0; i < children.length; i++){
+
+        String[] children = dir.list(filter);
+        if(children.length == 1) {
+
+            for(int i = 0; i<children.length; i++) {
                 fileName = children[i];
             }
-        }else{
-            Error error = new Error("Błąd, plik o podanym id nie istnieje");
+        }else {
+            System.out.println("Something się spierdoliło...");
         }
+
         return fileName;
+
     }
+
 }

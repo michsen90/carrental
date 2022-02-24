@@ -70,8 +70,8 @@ public class BookingController {
         Booking newBooking = bookingService.saveBooking(book);
         PDFBooking pdfBooking = new PDFBooking();
         pdfBooking.createPdfBooking(newBooking);
-        String fileName = pdfBooking.getFileName(String.valueOf(book.getBookingId()));
-        //prepareEmailToSend(book, fileName);
+        String fileName = pdfBooking.getFileName(String.valueOf(newBooking.getBookingId()));
+        prepareEmailToSend(newBooking, fileName);
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
 
     }
@@ -95,11 +95,11 @@ public class BookingController {
         Mail mail = new Mail();
         mail.setMailFrom(EMAIL_SEND);
         mail.setMailTo(booking.getClient().getEmail());
-        mail.setMailSubject("Potwierdzenie złożenia zamówienia numer: " + booking.getBookingId() + "!");
+        mail.setMailSubject("Potwierdzenie złożenia zamówienia numer: " + booking.getBookingId() + " !");
         mail.setMailContent("Witaj " + booking.getClient().getFirstname() + " " + booking.getClient().getFirstname() +" ! \n\n" +
                 "   W załączeniu przesyłamy potwierdzenie dokonania rezerwacji na samochód: " + booking.getCar().getBrand() + " " + booking.getCar().getModel() + "\n" +
                 "Samochód jest do odbioru w naszej siedzibie przy Lotnisku od godziny 9:00 do 17:00, przekroczenie tego okresu, będzie wiązało się z naliczeniem kosztów, \n" +
-                "związanych z przetrzymanie pojazdu, tj. " + booking.getCar().getPrice().getPricePerDay() + " PLN brutto za dobrę. /n" +
+                "związanych z przetrzymanie pojazdu, tj. " + booking.getCar().getPrice().getPricePerDay() + " PLN brutto za dobrę. " +
                 "\n\n" +
                 "Jeśli masz jakieś pytania, skontaktuj się z nami telefonicznie lub mailowo na: \n" +
                 "Email: " + EMAIL_SEND);

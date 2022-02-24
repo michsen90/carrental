@@ -154,7 +154,7 @@ export class CheckFreeCarsComponent implements OnInit {
         if(this.qtyMonths == 1){
           this.finalPrice = c.price.pricePerMonth
         }else{
-          this.finalPrice = c.price.pricePerMonth * (this.booking.endDate.getMonth() - this.booking.startDate.getMonth());
+          this.finalPrice = c.price.pricePerMonth * this.qtyMonths;
         }
 
         
@@ -185,7 +185,7 @@ export class CheckFreeCarsComponent implements OnInit {
       (date2.getFullYear() - date1.getFullYear()) * 12 + 
       date2.getMonth() - 
       date1.getMonth(), 0
-    )}
+    )};
 
 
 
