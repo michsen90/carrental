@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from '../cars/cars.component';
@@ -15,6 +16,7 @@ export class CarComponent implements OnInit {
   id: number;
   price: Prices;
   idPrice: number
+  productionYear;
 
   tak = 'TAK';
   nie = 'NIE';
@@ -29,7 +31,8 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +41,9 @@ export class CarComponent implements OnInit {
 
     this.price = new Prices(this.idPrice, 0, 0.8, 0.7, 0);
 
-    this.car = new Car(this.id, '', '', new Date(), '', '', '', 0, '', '', '', '', this.price);
+    this.productionYear = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+
+    this.car = new Car(this.id, '', '', this.productionYear, '', '', '', 0, '', '', '', '', this.price);
 
     console.log('id: ' + this.id);
     console.log('car' + this.car)
@@ -59,13 +64,16 @@ export class CarComponent implements OnInit {
     )
   }
 
+
+
    saveCar(){
      if(this.id == -1){
-       console.log('car for saving: ' + this.car);
+
+       
       this.carService.createCar(this.car).subscribe(
         res => {
           console.log(this.car);
-          console.log(res);
+          
           this.router.navigate(['cars']);
         }
       )
@@ -77,7 +85,6 @@ export class CarComponent implements OnInit {
           this.router.navigate(['cars']);
         }
       )
-  
      }
    }
    

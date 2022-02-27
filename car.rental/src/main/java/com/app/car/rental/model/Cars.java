@@ -1,7 +1,9 @@
 package com.app.car.rental.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +18,8 @@ public class Cars {
 
     private String brand;
     private String model;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date productionYear;
     private String body;
     private String airConditioning;
