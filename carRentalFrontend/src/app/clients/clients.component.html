@@ -5,7 +5,7 @@
 
 <div class="container">
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Imię</th>
                 <th>Nazwisko</th>
@@ -30,7 +30,7 @@
                 <td>{{c.user.username}}</td>
                 <td>{{c.user.roles}}</td>
                 <button class="btn btn-info" (click)="updateClient(c)">Edytuj </button>
-                <button class="btn btn-info" (click)="deleteClient(c)">Usun</button>
+                <button class="btn btn-danger" (click)="deleteClient(c)">Usun</button>
             </tr>
         </tbody>
     </table>

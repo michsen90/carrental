@@ -1,12 +1,12 @@
-<h1>Client management</h1>
+<h1>Uzupelnij dane: </h1>
 
 <div class="container">
-    <div class="alert alert-warning" *ngIf="clientForm.dirty && clientForm.invalid">Enter valid values into the inputs!</div>
-    <div class="alert alert-warning" *ngIf="clientForm.dirty && firstname.valid">Enter the firsrname</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && clientForm.invalid">Uzupełnij dane w formularzu!</div>
+    <!--<div class="alert alert-warning" *ngIf="clientForm.dirty && firstname.valid">Enter the firsrname</div>
     <div class="alert alert-warning" *ngIf="clientForm.dirty && lastname.valid">Enter the lastname</div>
     <div class="alert alert-warning" *ngIf="clientForm.dirty && email.valid">Enter the correct email address</div>
     <div class="alert alert-warning" *ngIf="clientForm.dirty && username.valid">Enter the valid username</div>
-    <div class="alert alert-warning" *ngIf="clientForm.dirty && password.valid">Enter the valid username</div>
+    <div class="alert alert-warning" *ngIf="clientForm.dirty && password.valid">Enter the valid username</div>-->
   
 
 
@@ -45,7 +45,7 @@
         </fieldset>
         <fieldset class="form-group">
             <label>Hasło</label>
-            <input type="password" #password = "ngModel" (ngModel)="client.user.password" class="form-control" name="password" required="required" minlength="5">
+            <input type="password" #password = "ngModel" [(ngModel)]="client.user.password"  class="form-control" name="password" required="required" minlength="5">
         </fieldset>
         <button type="submit" class="btn btn-success">Save Client </button> 
     </form>

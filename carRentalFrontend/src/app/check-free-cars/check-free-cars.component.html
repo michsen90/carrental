@@ -26,7 +26,7 @@
 
     <table class="table" *ngIf="isChoosen">
         <thead>
-            <tr>
+            <tr class="table-success">
                 <th>Marka i model</th>
                 <th>Rok produkcji</th>
                 <th>Nadwozie</th>
@@ -60,8 +60,8 @@
                     {{finalPrice}} PLN brutto
                 </td>
                 <td>
-                    <button type="submit" (click)="bookingThisCar()">Rezerwuj!</button><br>
-                    <button type="submit" (click)="changeCar()">Zmień samochód</button>
+                    <button class="btn btn-success" type="submit" (click)="bookingThisCar()">Rezerwuj!</button><br>
+                    <button class="btn btn-info" type="submit" (click)="changeCar()">Zmień samochód</button>
                 </td>
             </tr>
         </tbody>
@@ -72,7 +72,7 @@
     </p>
 
     <table class="table" *ngIf="!isChoosen" >
-        <thead>
+        <thead class="table-warning">
             <tr>
                 <th>Marka i model</th>
                 <th>Rok produkcji</th>

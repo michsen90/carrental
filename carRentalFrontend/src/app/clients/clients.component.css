@@ -1,11 +1,9 @@
 
 h1{
     text-align: center;
-    background-color: rgb(217, 233, 186);
     text-decoration: double;
 }
 div{
-    background-color: rgb(133, 151, 133);
     width: 100%;
     border-collapse: collapse;
 
@@ -17,22 +15,16 @@ table{
 }
 
 thead{
-    background-color: rgb(75, 92, 75);
+    
     text-align: center;
 }
 
 tbody{
-    background-color: rgb(201, 224, 211);
+    
     text-align: center;
 }
 
 
 th{
     font-weight: bold;
-    background-color: black;
-    color: white;
-}
-button{
-    background-color: black;
-    color: white;
-}
+}    

@@ -1,10 +1,9 @@
 h1{
-    text-align: center;
-    background-color: rgb(145, 197, 197);
+    
     text-decoration: double;
 }
 div{
-    background-color: rgb(123, 184, 184);
+    
     width: 100%;
     border-collapse: collapse;
 
@@ -16,18 +15,17 @@ table{
 }
 
 thead{
-    background-color: rgb(132, 197, 197);
+    
     text-align: center;
 }
 
 tbody{
-    background-color: azure;
+    
     text-align: center;
 }
 
 
 th{
     font-weight: bold;
-    background-color: black;
-    color: white;
+    
 }

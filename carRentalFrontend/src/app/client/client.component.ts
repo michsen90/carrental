@@ -14,7 +14,7 @@ export class ClientComponent implements OnInit {
   id: number;
   client: Client;
   user: User;
-  idUser:number
+  idUser: number;
 
   constructor(
     private clientService: ClientService,
@@ -25,7 +25,7 @@ export class ClientComponent implements OnInit {
   ngOnInit(): void {
 
     this.id = this.route.snapshot.params['idClient'];
-    this.user = new User( this.idUser, '', '', 1, 'USER', '');
+    this.user = new User(this.idUser, '', '', 1, 'USER', '');
     
     this.client = new Client(this.id, '', '', '', '', '', '', '', this.user );
 
@@ -51,7 +51,7 @@ export class ClientComponent implements OnInit {
         res => {
           //console.log('new client: ' + this.client);
           //console.log(res);
-        this.router.navigate(['clients']);
+        this.router.navigate(['login']);
         }) 
     } else {
       this.clientService.updateClient(this.id, this.client).subscribe(

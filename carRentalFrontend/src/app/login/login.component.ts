@@ -39,4 +39,8 @@ export class LoginComponent implements OnInit {
         })
   }
 
+  createNewClient(){
+    this.router.navigate(['client', -1]);
+  }
+
 }

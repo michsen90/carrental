@@ -52,7 +52,7 @@ export class ClientsComponent implements OnInit {
       data => {
         
         this.clients = data;
-        console.log(this.clients);
+        //console.log(this.clients);
       }
     )
   }
@@ -60,7 +60,7 @@ export class ClientsComponent implements OnInit {
   getClientById(){
     this.clientService.getClientById(1).subscribe(data => {
       this.client = data;
-      console.log(this.client);
+      //console.log(this.client);
     })
   }
 
@@ -71,7 +71,7 @@ export class ClientsComponent implements OnInit {
   
   updateClient(c){
 
-    console.log(c.id);
+    //console.log(c.id);
     
     this.router.navigate(['client', c.id]);
     

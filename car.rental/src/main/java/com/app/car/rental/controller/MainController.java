@@ -1,13 +1,27 @@
 package com.app.car.rental.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.app.car.rental.model.Clients;
+import com.app.car.rental.services.ClientsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/apiAll")
 public class MainController {
 
+    @Autowired
+    private ClientsService clientsService;
+
+    @PostMapping("/clientAdd")
+    public ResponseEntity<Clients> newClient(@RequestBody Clients client){
+
+        /**Clients newClient = clientRepository.save(client);*/
+
+        Clients newClient = clientsService.addClient(client);
+        return new ResponseEntity<>(newClient, HttpStatus.CREATED);
+    }
 
     @GetMapping("/all")
     public String sendMessageForAll(){

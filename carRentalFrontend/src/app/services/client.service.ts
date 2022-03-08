@@ -17,6 +17,8 @@ export class ClientService {
 
   API_URL = 'http://localhost:8080/clients';
 
+  API_URL_ADD = 'http://localhost:8080/apiAll/clientAdd';
+
   getClients(){
     return this.http.get<Client[]>(`${this.API_URL}/all`);
   }
@@ -33,8 +35,11 @@ export class ClientService {
     return this.http.put<User>(`${this.API_URL}/update/${id}`, client);
   }
 
-  createClient(client){
+  /*createClient(client){
     return this.http.post<User>(`${this.API_URL}/add`, client);
+  }*/
+  createClient(client){
+    return this.http.post<User>(`${this.API_URL_ADD}`, client);
   }
 
   deleteClient(id){

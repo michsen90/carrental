@@ -2,13 +2,24 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <ul class="navbar-nav">
             <li><a *ngIf="isAuthenticatedUser()" routerLink="/welcome" class="nav-link">O nas</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/clients" class="nav-link">Klienci</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/cars" class="nav-link">Samochody</a></li>
-            <li><a *ngIf="isAuthenticatedUser()" routerLink="/booking" class="nav-link">Rezerwacje</a> </li>
+            
         </ul>
         <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" *ngIf="isAuthenticatedUser() && isAdmin()">ADMIN PANEL</a>
+                <div class="dropdown-content">
+                    <a routerLink="/clients">ADMIN KLIENCI</a>
+                    <a routerLink="/cars">ADMIN SAMOCHODY</a>
+                    <a routerLink="/booking">ADMIN ZAMÓWIENIA</a>
+                </div>
             <li><a *ngIf="!isAuthenticatedUser()" routerLink="/login">Zaloguj</a></li>
             <li><a *ngIf="isAuthenticatedUser()" routerLink="/logout">Wyloguj</a></li> 
         </ul>
     </nav>
 </header>
+
+<!--
+    <li><a *ngIf="isAuthenticatedUser()" routerLink="/clients" class="nav-link">ADMIN Klienci</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/cars" class="nav-link">ADMIN Samochody</a></li>
+            <li><a *ngIf="isAuthenticatedUser()" routerLink="/booking" class="nav-link">ADMIN Rezerwacje</a> </li>
+-->

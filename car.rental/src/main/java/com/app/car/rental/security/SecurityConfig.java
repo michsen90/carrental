@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,13 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/apiAll/**").anonymous()
                 .antMatchers(HttpMethod.OPTIONS,"/clients/**").hasRole("ADMIN")
                 .antMatchers("/cars/**").hasRole("ADMIN")
                 .antMatchers("/booking/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.OPTIONS, "/basic", "/basic/byUser/**").permitAll()
-                .anyRequest()
-                .authenticated().and().httpBasic();
-
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
         http.csrf().disable();
 
 
@@ -62,6 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          .antMatchers(HttpMethod.OPTIONS,"/api/public/clients").hasRole("ADMIN")*/
 
 
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception{
+        webSecurity.ignoring().antMatchers("/apiAll/**");
     }
 
     @Bean

@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
   { path: 'users', component: UsersComponent, canActivate: [RouteGuardService]},
   { path: 'clients', component: ClientsComponent, canActivate: [RouteGuardService]},
-  { path: 'client/:idClient', component: ClientComponent, canActivate: [RouteGuardService]},
+  { path: 'client/:idClient', component: ClientComponent},
   { path: 'cars', component: CarsComponent, canActivate: [RouteGuardService]},
   { path: 'car/:idCar', component: CarComponent, canActivate: [RouteGuardService]},
   { path: 'booking', component: BookingsComponent, canActivate: [RouteGuardService]},
